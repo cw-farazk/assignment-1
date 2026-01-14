@@ -1,0 +1,240 @@
+:root {
+    --color-green-200: hsl(148, 38%, 91%);
+    --color-green-600: hsl(169, 82%, 27%);
+    --color-red: hsl(0, 66%, 54%);
+    --color-white: hsl(0, 0%, 100%);
+    --color-grey-500: hsl(186, 15%, 59%);
+    --color-grey-900: hsl(187, 24%, 22%);
+
+    --font-family: 'Karla', sans-serif;
+    --font-size-base: 16px;
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('./assets/fonts/Karla-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400 700;
+    font-style: auto;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: 'Karla', 'sans-serif';
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    background-color: var(--color-green-200);
+    color: var(--color-grey-900);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    background-color: var(--color-white);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 736px;
+    /* From design */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.form-row-double {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+
+.border {
+    border: 1px solid blue;
+}
+
+.form-row-single {}
+
+.form-border {
+    border: 1px solid var(--color-green-200);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+
+input,
+textarea {
+    border: 1px solid var(--color-grey-500);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+input {
+    height: 40px;
+}
+
+input:focus,
+textarea:focus {
+    /* border: 1px solid var(--color-green-600); */
+    border-color: var(--color-green-600);
+    outline: none;
+    box-shadow: 0 0 0 1px var(--color-green-600);
+}
+
+input.error,
+textarea.error {
+    border-color: var(--color-red);
+}
+
+.consent-label {
+    font-size: inherit;
+}
+
+.error-message {
+    color: var(--color-red);
+    font-size: 0.875rem;
+    /* 14px */
+    display: none;
+    /* Hidden by default */
+}
+
+.error-message.visible {
+    display: block;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-grey-900);
+    color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+
+    /* Animation state */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, top 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    /* top: 40px; */
+    /* Slight drop down effect */
+}
+
+.toast-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.toast p {
+    font-size: 1rem;
+    color: var(--color-green-200);
+    line-height: 1.5;
+}
+
+/* Radio Buttons */
+.radio-group {
+    gap: 1rem;
+}
+
+.radio-card {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-grey-500);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.radio-card:hover {
+    border-color: var(--color-green-600);
+}
+
+.radio-card:has(input:checked) {
+    background-color: var(--color-green-200);
+    border-color: var(--color-green-600);
+}
+
+.radio-card input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75rem;
+    cursor: pointer;
+    accent-color: var(--color-green-600);
+}
+
+
+input[type="checkbox"] {
+
+    width: 18px;
+    height: 18px;
+    margin-right: 1rem;
+    cursor: pointer;
+    accent-color: var(--color-green-600);
+}
+
+
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-green-600);
+    color: var(--color-white);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .form-row-double {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .consent-label {
+        font-size: 0.8rem;
+        line-height: normal
+    }
+}
