@@ -52,43 +52,59 @@ const validateForm = () => {
     const MAX_MESSAGE_LENGTH = 100;
 
     // First Name Validation
-    if (firstName.value.trim() === '') {
+    const firstNameValue = firstName.value.trim();
+    if (firstNameValue === '' || /^\s+$/.test(firstName.value)) {
         firstNameError.textContent = 'This field is required';
         showError(firstName, firstNameError);
         isValid = false;
-    } else if (firstName.value.trim().length > MAX_NAME_LENGTH) {
+    } else if (firstNameValue.length > MAX_NAME_LENGTH) {
         firstNameError.textContent = `Name should be less than ${MAX_NAME_LENGTH} characters`;
         showError(firstName, firstNameError);
         isValid = false;
-    } else if (!isValidName(firstName.value.trim())) {
+    } else if (!isValidName(firstNameValue)) {
         firstNameError.textContent = 'Name should not contain numbers';
         showError(firstName, firstNameError);
         isValid = false;
+    } else {
+        // Normalize: trim whitespace
+        firstName.value = firstNameValue;
     }
 
     // Last Name Validation
-    if (lastName.value.trim() === '') {
+    const lastNameValue = lastName.value.trim();
+    if (lastNameValue === '' || /^\s+$/.test(lastName.value)) {
         lastNameError.textContent = 'This field is required';
         showError(lastName, lastNameError);
         isValid = false;
-    } else if (lastName.value.trim().length > MAX_NAME_LENGTH) {
+    } else if (lastNameValue.length > MAX_NAME_LENGTH) {
         lastNameError.textContent = `Name should be less than ${MAX_NAME_LENGTH} characters`;
         showError(lastName, lastNameError);
         isValid = false;
-    } else if (!isValidName(lastName.value.trim())) {
+    } else if (!isValidName(lastNameValue)) {
         lastNameError.textContent = 'Name should not contain numbers';
         showError(lastName, lastNameError);
         isValid = false;
+    } else {
+        // Normalize: trim whitespace
+        lastName.value = lastNameValue;
     }
 
     // Email Validation
-    if (email.value.trim().length > MAX_EMAIL_LENGTH) {
+    const emailValue = email.value.trim();
+    if (emailValue === '' || /^\s+$/.test(email.value)) {
+        emailError.textContent = 'Please enter a valid email address';
+        showError(email, emailError);
+        isValid = false;
+    } else if (emailValue.length > MAX_EMAIL_LENGTH) {
         emailError.textContent = `Email should be less than ${MAX_EMAIL_LENGTH} characters`;
         showError(email, emailError);
         isValid = false;
-    } else if (!isValidEmail(email.value.trim())) {
+    } else if (!isValidEmail(emailValue)) {
         showError(email, emailError);
         isValid = false;
+    } else {
+        // Normalize: trim whitespace
+        email.value = emailValue;
     }
 
 
@@ -110,14 +126,18 @@ const validateForm = () => {
     }
 
     // Message Validation
-    if (message.value.trim() === '') {
+    const messageValue = message.value.trim();
+    if (messageValue === '' || /^\s+$/.test(message.value)) {
         messageError.textContent = 'This field is required';
         showError(message, messageError);
         isValid = false;
-    } else if (message.value.trim().length > MAX_MESSAGE_LENGTH) {
+    } else if (messageValue.length > MAX_MESSAGE_LENGTH) {
         messageError.textContent = `Message should be less than ${MAX_MESSAGE_LENGTH} characters`;
         showError(message, messageError);
         isValid = false;
+    } else {
+        // Normalize: trim whitespace
+        message.value = messageValue;
     }
 
     // Consent Validation

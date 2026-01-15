@@ -42,7 +42,6 @@ body {
     border-radius: 1rem;
     width: 100%;
     max-width: 736px;
-    /* From design */
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
@@ -53,7 +52,6 @@ body {
 }
 
 .form-group {
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
